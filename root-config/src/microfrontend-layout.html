@@ -1,0 +1,38 @@
+<!-- <single-spa-router>
+  <main>
+    <div id="modal"></div>
+    <route path="/tasks" activeWhen={["/tasks"]}>
+      <application name="@ups/react-tasks"></application>
+    </route>
+    <route path="/login" >
+      <application name="@ups/angular-login"></application>     
+    </route>
+  
+      <application name="@ups/mf-create-user"></application>
+  
+  </main>
+</single-spa-router> -->
+
+
+
+<single-spa-router>
+  <main >
+    <div id="modal"></div>
+    <route path="/tasks" activeWhen={["/tasks"]}>
+      <application name="@ups/react-tasks"></application>
+    </route>
+    <route path="/login">
+     <div class="centered-container">
+      <div class="content-wrapper"> 
+    
+        <div class="auth-container">
+          <application name="@ups/angular-login"></application>
+          <application name="@ups/mf-create-user"></application>
+        </div>
+  
+    </div>
+  </div>
+</route>
+  </main>
+</single-spa-router>
+

@@ -91,44 +91,58 @@
 
 
 
+# version: '3'
+# services:
+#   root-config:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile-root
+#     ports:
+#       - "9000:9000"
+
+#   react-tasks:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile-react
+#     ports:
+#       - "3000:3000"
+  
+#   create-users:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile-vue
+#     ports:
+#       - "3001:3001"
+
+#   angular-login:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile-angular
+#     ports:
+#       - "4200:4200"
+
+#   nginx:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile-nginx
+#     ports:
+#       - "80:80"
+#     depends_on:
+#       - root-config
+#       - react-tasks
+#       - create-users
+#       - angular-login
+
+
+
+
 version: '3'
 services:
-  root-config:
-    build:
-      context: .
-      dockerfile: Dockerfile-root
-    ports:
-      - "9000:9000"
-
-  react-tasks:
-    build:
-      context: .
-      dockerfile: Dockerfile-react
-    ports:
-      - "3000:3000"
-  
-  create-users:
-    build:
-      context: .
-      dockerfile: Dockerfile-vue
-    ports:
-      - "3001:3001"
-
   angular-login:
     build:
       context: .
-      dockerfile: Dockerfile-angular
-    ports:
-      - "4200:4200"
-
-  nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile-nginx
+      dockerfile: Dockerfile
     ports:
       - "80:80"
-    depends_on:
-      - root-config
-      - react-tasks
-      - create-users
-      - angular-login
+
+ 

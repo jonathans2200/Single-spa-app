@@ -1,83 +1,4 @@
 
-
-
-# version: '3'
-# services:
-#   root-config:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile-root
-#     ports:
-#       - "9000:9000"
-
-#   react-tasks:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile-react
-#     ports:
-#       - "3000:3000"
-  
-
-
-#   angular-login:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile-angular
-#     ports:
-#       - "4200:4200"
-
-#   nginx:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile-nginx
-#     ports:
-#       - "80:80"
-#     depends_on:
-#       - root-config
-#       - react-tasks
-    
-#       - angular-login
-
-
-
-
-# version: '3'
-# services:
-#   root-config:
-#     build: ./root-config
-#     ports:
-#       - "9000:9000"
-#     networks:
-#       - microfrontend-network
-
-#   angular-login:
-#     build: ./angular-login
-#     ports:
-#       - "80:80"
-#     networks:
-#       - microfrontend-network
-
-#   react-task:
-#     build: ./react-tasks
-#     ports:
-#       - "3000:3000"
-#     networks:
-#       - microfrontend-network
-
-#   create-users:
-#     build: ./create-users
-#     ports:
-#       - "3001:3001"
-#     networks:
-#       - microfrontend-network
-
-# networks:
-#   microfrontend-network:
-#     driver: bridge
-
-
-
-
 version: '3'
 
 services:
@@ -98,9 +19,9 @@ services:
   react-task:
     build: ./react-tasks
     ports:
-      - "3000:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - "3000:3000"
+    # volumes:
+    #   - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
 
   create-users:
     build: ./create-users
@@ -112,3 +33,46 @@ services:
 networks:
   default:
     name: microfrontend-network
+
+
+
+
+
+# version: '3'
+
+# services:
+#   root-config:
+#     build: ./root-config
+#     ports:
+#       - "9000:80"
+#     volumes:
+#       - ./root-config/nginx.conf:/etc/nginx/nginx.conf:ro
+
+#   angular-login:
+#     build: ./angular-login
+#     ports:
+#       - "4200:80"
+#     volumes:
+#       - ./angular-login/nginx.conf:/etc/nginx/nginx.conf:ro
+
+#   react-tasks:
+#     build: ./react-tasks
+#     ports:
+#       - "3000:80"
+#     volumes:
+#       - ./react-tasks/nginx.conf:/etc/nginx/nginx.conf:ro
+
+#   create-users:
+#     build: ./create-users
+#     ports:
+#       - "3001:80"
+#     volumes:
+#       - ./create-users/nginx.conf:/etc/nginx/nginx.conf:ro
+
+# networks:
+#   default:
+#     name: microfrontend-network
+
+
+
+

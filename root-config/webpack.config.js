@@ -1,7 +1,7 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackAssetsManifest = require('webpack-assets-manifest');
+
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "ups";
@@ -14,10 +14,7 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    output: {
-      filename: '[name].[contenthash].js',
-      publicPath: '/',
-    },
+ 
     devServer: {
       port: 9000,
       compress: true,
@@ -41,11 +38,7 @@ module.exports = (webpackConfigEnv, argv) => {
           orgName,
         },
       }),
-      new WebpackAssetsManifest({
-        output: 'asset-manifest.json',
-        writeToDisk: true,
-        publicPath: true,
-      }),
+     
     ],
     externals: ["single-spa"],
   });

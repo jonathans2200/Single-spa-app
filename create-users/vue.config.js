@@ -2,8 +2,8 @@ module.exports = {
   configureWebpack: {
     output: {
       libraryTarget: 'system',
-      filename: '[name].[contenthash].js',
-      chunkFilename: '[name].[contenthash].js',
+      filename: 'js/[name].js',
+      chunkFilename: 'js/[name].js',
     },
     devServer: {
       port: 3001,
@@ -12,11 +12,11 @@ module.exports = {
       }
     },
   },
-  filenameHashing: true,
+  filenameHashing: false,
   css: {
     extract: {
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[name].[contenthash].css',
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].css',
     },
   },
 };

@@ -54,7 +54,7 @@ export class AuthService {
 
   // método para redirección
   private redirectToTasks(): void {
-    window.location.href = 'http://localhost/tasks';
+    window.location.href = 'http://localhost:9000/tasks';
   }
 
   private redirectToRegister(): void {

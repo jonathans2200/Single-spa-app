@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "ups";
@@ -13,10 +14,12 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    output: {
+      filename: '[name].[contenthash].js',
+      publicPath: '/',
+    },
     devServer: {
       port: 9000,
-    
       compress: true,
       historyApiFallback: true,
       proxy: {
@@ -37,6 +40,11 @@ module.exports = (webpackConfigEnv, argv) => {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
         },
+      }),
+      new WebpackAssetsManifest({
+        output: 'asset-manifest.json',
+        writeToDisk: true,
+        publicPath: true,
       }),
     ],
     externals: ["single-spa"],
